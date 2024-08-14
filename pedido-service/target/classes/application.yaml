@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: pedido-service
+server:
+  port: 8081
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance-id:${random.value}}
+
+
