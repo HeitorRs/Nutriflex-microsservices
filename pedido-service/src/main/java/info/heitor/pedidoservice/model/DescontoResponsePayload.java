@@ -9,7 +9,8 @@ import java.math.BigDecimal;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DescontoResponsePayload {
+public class
+DescontoResponsePayload {
     private BigDecimal valorTotalComDesconto;
 }
 

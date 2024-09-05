@@ -5,9 +5,11 @@ import info.heitor.pedidoservice.model.Pedido;
 import info.heitor.pedidoservice.model.Produto;
 import info.heitor.pedidoservice.repository.PedidoRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -22,12 +24,16 @@ public class PedidoService {
     }
 
     public BigDecimal valorTotalPedido(Pedido pedido) {
-        return pedido.getItems().stream().map(this::valorTotalItem)
+        return pedido.getItens().stream().map(this::valorTotalItem)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
     public BigDecimal valorTotalItem(ItemPedido itemPedido) {
         Produto produto = produtoService.findById(itemPedido.getProdutoId());
         return produto.getPreco().multiply(BigDecimal.valueOf(itemPedido.getQuantidade()));
+    }
+
+    public Optional<Pedido> procurarPorId(String id) {
+        return pedidoRepository.findById(id);
     }
 }

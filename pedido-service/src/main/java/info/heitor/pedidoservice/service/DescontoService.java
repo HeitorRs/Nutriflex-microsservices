@@ -4,10 +4,7 @@ import info.heitor.pedidoservice.model.DescontoResponsePayload;
 import info.heitor.pedidoservice.model.Pedido;
 import info.heitor.pedidoservice.service.feign.DescontoClient;
 import lombok.AllArgsConstructor;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestClient;
-import org.springframework.web.client.RestTemplate;
 
 @Service
 @AllArgsConstructor
